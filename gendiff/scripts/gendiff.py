@@ -1,4 +1,4 @@
-from main_logic.arg_parse import arg_parser
+from gendiff.main_logic.arg_parse import arg_parser
 
 
 def main():
