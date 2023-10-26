@@ -3,7 +3,8 @@ from gendiff.main_logic.generate_diff import generate_diff
 
 
 def main():
-    generate_diff(arg_parser())
+    args = arg_parser()
+    print(args)
 
 
 if __name__ == '__main__':
