@@ -1,11 +1,12 @@
 import json
+from deepdiff import DeepDiff
 
 
 def generate_diff(file_path1, file_path2):
     file1_content = json.load(open(file_path1))
     file2_content = json.load(open(file_path2))
     file1_keys, file2_keys = [], []
-    diff_container = {}
+    diff_container = '{\n'
 
 
     for key in file1_content:
@@ -17,14 +18,13 @@ def generate_diff(file_path1, file_path2):
 
     for key in file1_keys:
         if key not in file2_keys:
-            key_new = '- ' + key
-            diff_container[key_new] = file1_content[key]
+            diff_key = '  - ' + key + ': ' + str(file1_content[key]) + ',' + '\n'
+            diff_container += diff_key           
         
         elif file1_content[key] == file2_content[key]:
-            diff_container[key] = file1_content[key]
+            pass
         
         elif file1_content[key] != file2_content[key]:
-            key_new = '+ ' + key
-            diff_container[key_new] = file2_content[key]
+            pass
 
-    print(json.dumps(diff_container, indent = 4))
+    print(diff_container + '\n}')
