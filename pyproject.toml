@@ -9,6 +9,7 @@ packages = [{include = "gendiff"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 deepdiff = "^6.6.1"
+dictdiffer = "^0.9.0"
 
 [tool.poetry.scripts]
 gendiff = "gendiff.scripts.gendiff:main"

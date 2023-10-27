@@ -1,5 +1,6 @@
 import json
 from deepdiff import DeepDiff
+from dictdiffer import diff, patch
 
 
 def generate_diff(file_path1, file_path2):
@@ -27,4 +28,7 @@ def generate_diff(file_path1, file_path2):
         elif file1_content[key] != file2_content[key]:
             pass
 
-    print(diff_container + '\n}')
+    diff1 = diff(file1_content, file2_content)
+    diff2 = diff(file2_content, file1_content)
+    print(patch(diff1, file1_content))
+    print(patch(diff2, file2_content))
