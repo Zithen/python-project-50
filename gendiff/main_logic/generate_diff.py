@@ -11,7 +11,7 @@ def generate_diff(file_path1, file_path2):
     file1_keys, file2_keys = [], []
     diff_container = '{\n'
 
-    diff1 = diff(file1_content, file2_content)
-    diff2 = diff(file2_content, file1_content)
-    print(patch(diff1, file1_content))
-    print(patch(diff2, file2_content))
+    diff1 = patch(diff(file1_content, file2_content), file1_content)
+    diff2 = patch(diff(file2_content, file1_content), file2_content)
+    print(diff1)
+    print(diff2)
