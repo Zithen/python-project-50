@@ -1,6 +1,9 @@
 install:
 	poetry install
 
+run:
+	poetry run gendiff /home/zithen/education/hexlet_python_projects/python-project-50/gendiff/files/file1.json /home/zithen/education/hexlet_python_projects/python-project-50/gendiff/files/file2.json
+
 test:
 	poetry run pytest
 
