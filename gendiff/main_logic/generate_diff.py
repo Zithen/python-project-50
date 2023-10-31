@@ -4,7 +4,7 @@ from dictdiffer import diff, patch
 
 
 def generate_diff(file_path1, file_path2):
-    with (open(file_path1, 'r') as file1, open(file_path2, 'r') as file2):
+    with (open(file_path1) as file1, open(file_path2) as file2):
         file1_content = json.load(file1)
         file2_content = json.load(file2)
     
