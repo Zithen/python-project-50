@@ -1,6 +1,4 @@
 import json
-from deepdiff import DeepDiff, Delta
-from dictdiffer import diff, patch
 
 
 def generate_diff(file_path1, file_path2):
@@ -27,4 +25,3 @@ def generate_diff(file_path1, file_path2):
     diff_string += '}'
 
     return diff_string
-    
