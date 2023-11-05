@@ -2,9 +2,8 @@ import json
 
 
 def generate_diff(file_path1, file_path2):
-    with open(file_path1) as file1:
+    with (open(file_path1) as file1, open(file_path2) as file2):
         file1_content = json.load(file1)
-    with open(file_path2) as file2:
         file2_content = json.load(file2)
     diff_container = {}
     merged_files_content = dict(sorted(({**file1_content, **file2_content}).items())) # noqa E501
