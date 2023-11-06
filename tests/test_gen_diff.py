@@ -14,10 +14,10 @@ def file_path2():
 
 @pytest.fixture
 def expected():
-    return 'tests/fixtures/result_generate_diff.txt'
+    with (open('tests/fixtures/result_generate_diff.txt') as expected):
+        return expected
 
 
-def test_basic(file_path1, file_path2):
+def test_basic(file_path1, file_path2, expected):
     result = generate_diff(file_path1, file_path2)
-    diff_string = open(expected)
-    assert result == diff_string
+    assert result == expected
