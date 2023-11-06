@@ -4,7 +4,7 @@ from gendiff.main_logic.gener_diff import generate_diff
 
 @pytest.fixture
 def file_path1():
-    return 'tests/fixtures/files/file1.json'
+    return 'tests/fixtures/file1.json'
 
 
 @pytest.fixture
