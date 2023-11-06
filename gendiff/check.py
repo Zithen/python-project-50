@@ -5,4 +5,3 @@ FILE_PATH2 = '/home/zithen/education/hexlet_python_projects/python-project-50/ge
 
 diff = generate_diff(FILE_PATH1, FILE_PATH2)
 print(diff)
- 
