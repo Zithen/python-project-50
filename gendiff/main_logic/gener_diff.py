@@ -24,3 +24,4 @@ def generate_diff(file_path1: str, file_path2: str) -> str:
     diff_string += '}'
 
     return diff_string
+
