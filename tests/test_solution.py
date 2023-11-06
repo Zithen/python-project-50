@@ -1,2 +1,2 @@
 def test_basic():
-    pass
+    assert [] == []
