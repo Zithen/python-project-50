@@ -15,7 +15,7 @@ def file_path2():
 @pytest.fixture
 def expected():
     with (open('tests/fixtures/result_generate_diff.txt') as expected):
-        return expected
+        return ('').join(list(expected))
 
 
 def test_basic(file_path1, file_path2, expected):
