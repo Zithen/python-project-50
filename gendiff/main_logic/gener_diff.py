@@ -1,4 +1,5 @@
 import json
+import yaml
 
 
 def generate_diff(file_path1: str, file_path2: str) -> str:
