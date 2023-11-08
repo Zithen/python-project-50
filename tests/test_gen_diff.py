@@ -31,4 +31,3 @@ def test_yml(expected):
 def test_yaml(expected):
     result = generate_diff(FILE_YAML_PATH1, FILE_YAML_PATH2)
     assert result == expected
-
