@@ -1,8 +1,8 @@
-from gendiff.main_logic.file_parser import parse_file
+from gendiff.main_logic.file_parser import parse_files
 
 
 def generate_diff(file_path1: str, file_path2: str) -> str:
-    file1_content, file2_content = parse_file(file_path1, file_path2)
+    file1_content, file2_content = parse_files(file_path1, file_path2)
     diff_container = {}
     merged_files_content = dict(sorted((file1_content | file2_content).items()))
 
