@@ -1,10 +1,16 @@
 import json
-# import yaml
+import re
+import yaml
 
 
 def generate_diff(file_path1: str, file_path2: str) -> str:
     with (open(file_path1) as file1, open(file_path2) as file2):
-        file1_content, file2_content = json.load(file1), json.load(file2)
+        if re.match('^.*(.json)$', file_path1) and re.match('^.*(.json)$', file_path2):
+            file1_content, file2_content = json.load(file1), json.load(file2)
+        elif re.match('^.*(.yml|.yaml)$', file_path1) and re.match('^.*(.yml|.yaml)$', file_path2):
+            file1_content, file2_content = yaml.load(file1, Loader=yaml.Loader), yaml.load(file2, Loader=yaml.Loader)
+        else:
+            return 'Unknown format'
     diff_container = {}
     merged_files_content = dict(sorted(({**file1_content, **file2_content}).items())) # noqa E501
 
