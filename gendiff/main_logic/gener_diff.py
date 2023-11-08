@@ -4,7 +4,7 @@ from gendiff.main_logic.file_parser import parse_file
 def generate_diff(file_path1: str, file_path2: str) -> str:
     file1_content, file2_content = parse_file(file_path1, file_path2)
     diff_container = {}
-    merged_files_content = dict(sorted(({**file1_content, **file2_content}).items())) # noqa E501
+    merged_files_content = dict(sorted((file1_content | file2_content).items()))
 
     for key in merged_files_content:
         if key not in file2_content:
