@@ -10,6 +10,6 @@ def parse_files(file_path1, file_path2):
         elif re.match('^.*(.yml|.yaml)$', file_path1) and re.match('^.*(.yml|.yaml)$', file_path2): # noqa E501
             file1_content, file2_content = yaml.load(file1, Loader=yaml.Loader), yaml.load(file2, Loader=yaml.Loader) # noqa E501
         else:
-            return 'Unknown format'
+            raise RuntimeError('Unsupported file format')
 
     return (file1_content, file2_content)
