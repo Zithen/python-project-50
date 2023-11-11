@@ -1,5 +1,5 @@
 import pytest
-from gendiff.main_logic.gener_diff import generate_diff
+from gendiff.main_logic.diff_generator import generate_diff
 
 FILE_JSON_PATH1 = 'tests/fixtures/json_files/file1.json'
 FILE_JSON_PATH2 = 'tests/fixtures/json_files/file2.json'

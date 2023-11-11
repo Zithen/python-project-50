@@ -1,7 +1,7 @@
 import argparse
 
 
-def arg_parser():
+def parse_arguments():
     parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.') # noqa E501
     parser.add_argument('first_file')
     parser.add_argument('second_file')
