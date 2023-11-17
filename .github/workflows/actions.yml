@@ -1,4 +1,4 @@
-name: linter&test_check
+name: lint_and_test
 
 on:
   - push
