@@ -3,8 +3,8 @@ from gendiff.main_logic.internal_view_creator import create_internal_view
 
 
 def generate_diff(file_path1: str, file_path2: str) -> str:
-    file1_content, file2_content = parse_files(file_path1, file_path2)
     diff_container = {}
+    file1_content, file2_content = parse_files(file_path1, file_path2)
     merged_files_content = dict(sorted((file1_content | file2_content).items()))
     print(create_internal_view(file1_content, file2_content))
 

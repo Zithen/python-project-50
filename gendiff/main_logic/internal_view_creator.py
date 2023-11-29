@@ -1,35 +1,38 @@
-result = {}
-
-
-def merge_files(file1_c, file2_c):
-    merged_files_content = dict(sorted((file1_c | file2_c).items()))
-    return merged_files_content
-
-
-def find_added(file1_content, file2_content):
-    added = file2_content.keys() - file1_content.keys()
-    for item in added:
-        return file2_content.get(item)
-
-
-def find_removed(file1_content, file2_content):
-    return file1_content.keys() - file2_content.keys()
-
-
-def find_unchanged(file1_content, file2_content):
-    return file1_content.keys() & file2_content.keys()
-
-
-def walk(tree, depth=1):
-    for key, elem in tree.items():
-        if isinstance(elem, dict):
-            result.update({key: {'state': 'nested', 'depth': depth, 'value': elem}})
-            walk(elem, depth + 1)
-        else:
-            result.update({key: {'state': 'value', 'depth': depth, 'value': elem}})
-    
-    return result
-
-
 def create_internal_view(file1_content, file2_content):
-    return merge_files(file1_content, file2_content)
+    diff = {}
+    removed = file1_content.keys() - file2_content.keys()
+    added = file2_content.keys() - file1_content.keys()
+    unchanged = file1_content.keys() & file2_content.keys()
+
+    for key in unchanged:
+        file1_value = file1_content[key]
+        file2_value = file2_content[key]
+        if isinstance(file1_value, dict) and isinstance(file2_value, dict):
+            diff[key] = {
+                'state': 'nested',
+                'value': create_internal_view(file1_value, file2_value), }
+        elif file1_value == file2_value:
+            diff[key] = {
+                'state': 'unchanged',
+                'value': file1_content[key],
+            }
+        else:
+            diff[key] = {
+                'state': 'changed',
+                'old_value': file1_value,
+                'new_value': file2_value,
+            }
+
+    for key in removed:
+        diff[key] = {
+            'state': 'removed',
+            'value': file1_value,
+        }
+
+    for key in added:
+        diff[key] = {
+            'state': 'added',
+            'value': file2_value,
+        }
+
+    return diff
