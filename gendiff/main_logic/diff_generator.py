@@ -6,7 +6,6 @@ def generate_diff(file_path1: str, file_path2: str) -> str:
     diff_container = {}
     file1_content, file2_content = parse_files(file_path1, file_path2)
     merged_files_content = dict(sorted((file1_content | file2_content).items()))
-    print(create_internal_view(file1_content, file2_content))
 
     for key in merged_files_content:
         if key not in file2_content:
